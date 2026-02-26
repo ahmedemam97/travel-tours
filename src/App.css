@@ -59,7 +59,7 @@
 .lang-ddn {
   position: absolute !important;
   top: 120%;
-  left: 0;
+  left: -60px;
   min-width: 120px;
   z-index: 9999;
   display: block;

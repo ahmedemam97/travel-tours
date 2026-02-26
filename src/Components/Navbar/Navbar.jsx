@@ -3,10 +3,18 @@ import Logo from '../../Assets/Images/Logo.png';
 import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons'
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
+import { LangContext } from '../../Context/LangContext';
 function Navbar() {
     const [openLang, setOpenLang] = useState(false);
     const langRef = useRef(null);
+    let { setLanguage, language, translations } = useContext(LangContext)
+
+    function newLang(lng) {
+        setLanguage(lng);
+        setOpenLang(false);
+    }
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (langRef.current && !langRef.current.contains(event.target)) {
@@ -19,6 +27,13 @@ function Navbar() {
             document.removeEventListener("click", handleClickOutside);
         };
     }, []);
+
+
+    useEffect(() => {
+        console.log(translations);
+    }, [language]);
+
+
     return (
         <div>
             <nav className="navbar navbar-expand-lg fw-bold container">
@@ -27,56 +42,14 @@ function Navbar() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
 
-
-
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto d-flex align-items-center">
-                        {/* <li className="nav-item dropdown">
-                            <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Home
-                            </Link>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link class="dropdown-item" to="#">Action</Link>
-                                <Link class="dropdown-item" to="#">Another action</Link>
-                                <div class="dropdown-divider"></div>
-                                <Link class="dropdown-item" to="#">Something else here</Link>
-                            </div>
-                        </li>
 
-                        <li className="nav-item dropdown">
-                            <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Tours
-                            </Link>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link class="dropdown-item" to="#">Action</Link>
-                                <Link class="dropdown-item" to="#">Another action</Link>
-                                <div class="dropdown-divider"></div>
-                                <Link class="dropdown-item" to="#">Something else here</Link>
-                            </div>
-                        </li>
-
-                        <li className="nav-item dropdown">
-                            <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Destination
-                            </Link>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <Link class="dropdown-item" to="#">Destination List</Link>
-                                <Link class="dropdown-item" to="#">Single Destination</Link>
-                                <Link class="dropdown-item" to="#">Trip Ideas</Link>
-                            </div>
-                        </li>
-
-                        <li className="nav-item">
-                            <Link className="nav-link" to="#">Deals</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="#">Careers</Link>
-                        </li> */}
                         <Link className="navbar-brand" to="/">
                             <img src={Logo} alt="" />
                         </Link>
                         <li className="nav-item">
-                            <Link className="nav-link" to="/">Home</Link>
+                            <Link className="nav-link" to="/">{translations.home}</Link>
                         </li>
                     </ul>
 
@@ -97,11 +70,16 @@ function Navbar() {
 
                             {openLang && (
                                 <div className="dropdown-menu lang-ddn show">
-                                    <Link className="dropdown-item" to="#">
-                                        Arabic
+                                    <Link className="dropdown-item" to="#" onClick={() => newLang('en')} >
+                                        English
                                     </Link>
-                                    <Link className="dropdown-item" to="#">
+
+                                    <Link className="dropdown-item" to="#" onClick={() => newLang('fr')}>
                                         French
+                                    </Link>
+
+                                    <Link className="dropdown-item" to="#" onClick={() => newLang('rus')}>
+                                        Russian
                                     </Link>
                                 </div>
                             )}

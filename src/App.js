@@ -3,6 +3,7 @@ import "./App.css";
 import Home from "./Components/Home/Home";
 import Trip from "./Components/trip/Trip";
 import Layout from "./Components/Layout/Layout";
+import { LangContextProvider } from "./Context/LangContext";
 
 function App() {
   const routers = createBrowserRouter([
@@ -16,7 +17,11 @@ function App() {
     },
   ]);
 
-  return <RouterProvider router={routers} />;
+  return (
+    <LangContextProvider>
+      <RouterProvider router={routers} />
+    </LangContextProvider>
+  );
 }
 
 export default App;
