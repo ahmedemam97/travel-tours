@@ -7,6 +7,9 @@ import ImgOne from '../../Assets/Images/offers-3.png'
 import ImgTow from '../../Assets/Images/offers-5.png'
 import styles from "./Trip.module.css";
 
+import emailjs from "@emailjs/browser";
+
+
 function Trip() {
     const location = useLocation();
     const offer = location.state || {
@@ -32,11 +35,30 @@ function Trip() {
     }
 
     function handleSubmit(e) {
-        e.preventDefault();
-        // placeholder: send booking to backend
-        console.log('Booking submitted', form, offer);
-        alert('Booking submitted (demo)');
-    }
+    e.preventDefault();
+
+    emailjs.send(
+        "service_gwffsok",
+        "template_ghgvskp",
+        {
+            firstName: form.firstName,
+            lastName: form.lastName,
+            phone: form.phone,
+            email: form.email,
+            date: form.checkIn,
+            returnDate: form.checkOut,
+            totalPrice: form.totalPrice,
+        },
+        "J66PbF-Y5KVe2P523"
+    )
+    .then(() => {
+        alert("Booking Sent Successfully!");
+    })
+    .catch((error) => {
+        console.error("FAILED...", error);
+        alert("Something went wrong");
+    });
+}
 
     return (
         <>
