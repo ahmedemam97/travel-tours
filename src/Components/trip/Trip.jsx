@@ -3,8 +3,8 @@ import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import ImgOne from '../../Assets/Images/offers-3.png'
-import ImgTow from '../../Assets/Images/offers-5.png'
+import ImgOne from '../../Assets/menem-tours_imgs/trips/Boat.jpg'
+import ImgTow from '../../Assets/menem-tours_imgs/trips/Albatraa.jpg'
 import styles from "./Trip.module.css";
 
 import emailjs from "@emailjs/browser";
@@ -15,7 +15,7 @@ function Trip() {
     const offer = location.state || {
         title: 'Small-Group Antelope Canyon & Horseshoe Bend Tour from Las Vegas',
         price: 120,
-        img: require('../../Assets/Images/offers-4.png'),
+        img: require('../../Assets/menem-tours_imgs/trips/Rass-Mohammed.jpg'),
     };
 
     const [mode, setMode] = useState('book');
@@ -35,30 +35,38 @@ function Trip() {
     }
 
     function handleSubmit(e) {
-    e.preventDefault();
+        e.preventDefault();
+        console.log(e);
+        console.log(form);
 
-    emailjs.send(
-        "service_gwffsok",
-        "template_ghgvskp",
-        {
-            firstName: form.firstName,
-            lastName: form.lastName,
-            phone: form.phone,
-            email: form.email,
-            date: form.checkIn,
-            returnDate: form.checkOut,
-            totalPrice: form.totalPrice,
-        },
-        "J66PbF-Y5KVe2P523"
-    )
-    .then(() => {
-        alert("Booking Sent Successfully!");
-    })
-    .catch((error) => {
-        console.error("FAILED...", error);
-        alert("Something went wrong");
-    });
-}
+
+
+        emailjs.send(
+            "service_d4px7wb",
+            "template_pel49cx",
+            {
+                title: "Trip Tours",
+                firstName: form.firstName,
+                lastName: form.lastName,
+                phone: form.phone,
+                email: form.email,
+                dateFrom: form.checkIn,
+                dateTo: form.checkOut,
+                totalPrice: form.totalPrice,
+            },
+
+            process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+        )
+            .then(() => {
+                alert("Booking Sent Successfully!");
+                console.log(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+            })
+            .catch((error) => {
+                console.error("FAILED...", error);
+                alert("Something went wrong");
+                console.log(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+            });
+    }
 
     return (
         <>

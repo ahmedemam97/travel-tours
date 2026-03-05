@@ -1,3 +1,28 @@
 {
-    "home": "Home"
+    "home": "Home",
+    "client_1": {
+        "role": "Project Manager",
+        "comment": "Opa opa opa pa, as promised 😄 Good afternoon, we were in Sharm in March. I'd like to express my gratitude to the Menem Tours team for such an awesome desert safari excursion on ATVs and buggies 🙃, as well as a parachute flight and banana boat ride)))) Everything went wonderfully! And the prices are quite reasonable, compared to the guide's prices!"
+    },
+
+    "client_2": {
+        "role": "UI / UX Designer",
+        "comment": "Went to the pyramids. Very nice price: $55 per person, while through the hotel guide it was $120, that is, the difference is more than two times. The bus arrived on time, everything was organized at a satisfactory level. Top price/quality."
+    },
+
+    "client_3": {
+        "role": "Facility Engineer",
+        "comment": "We joined the Ras Mohammed and Dohab tour. Abdul picked us up from our hotel in a private vehicle, and the service was excellent. The tour was full of fun and included delicious food. If you're coming to Sham El Sheikh, all you have to do is trust this company. They'll take care of everything else. Their prices are really cheap."
+    },
+
+    "client_4": {
+        "role": "Operations Director",
+        "comment": "We took four excursions, and they all went perfectly, from the always-punctual hotel transfers to the always-kind guides. Highly recommended!"
+    },
+
+    "client_5": {
+        "role": "Web Developer",
+        "comment": "Menem is very welcoming and, above all, very accommodating. He offers high-quality services and excellent follow-up. I asked him to organize three outings for four people with a few specific requests. The service providers were aware of my changes, and Menem contacted me in the evening to check in. A huge thank you; our vacation was even better thanks to you."
+    }
+
 }

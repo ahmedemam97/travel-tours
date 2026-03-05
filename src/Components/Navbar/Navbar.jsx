@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import Logo from '../../Assets/Images/Logo.png';
+import Logo from '../../Assets/menem-tours_imgs/logo.png';
 import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEarthAmericas } from '@fortawesome/free-solid-svg-icons'
@@ -46,7 +46,7 @@ function Navbar() {
                     <ul className="navbar-nav me-auto d-flex align-items-center">
 
                         <Link className="navbar-brand" to="/">
-                            <img src={Logo} alt="" />
+                            <img className='logoImg' src={Logo} alt="Logo Img" />
                         </Link>
                         <li className="nav-item">
                             <Link className="nav-link" to="/">{translations.home}</Link>

@@ -52,6 +52,10 @@
   color: var(--mainColor);
 }
 
+.logoImg {
+  height: 60px;
+}
+
 .lang-div {
   position: relative;
 }
@@ -73,7 +77,7 @@
 /* End Navbar */
 /* Hero */
 .hero_parent {
-  background-image: url("./Assets/Images/Hero-Banner.png");
+  background-image: url("./Assets/menem-tours_imgs/hero-section-.jpg");
   background-repeat: no-repeat, repeat;
   color: white;
   /* margin: auto; */
@@ -294,7 +298,7 @@
 /* End Destination Section */
 
 /* Start Offers Section */
-.offers .offer {
+/* .offers .offer {
   width: calc(50% - 25px);
   background-repeat: no-repeat;
   padding: 30px;
@@ -343,7 +347,7 @@
 
 .offers .offer h1 {
   font-size: 30px;
-}
+} */
 
 /* End Offers Section */
 
@@ -364,6 +368,26 @@
   height: auto;
   margin: auto;
   max-width: 400px;
+  position: relative;
+}
+
+.best_choice::after {
+  content: "Best Choice";
+  position: absolute;
+  right: 10px;
+  top: 0;
+  background-color: red;
+  color: white;
+  width: fit-content;
+  padding: 5px;
+  border-radius: 0 0 10px 10px;
+}
+
+@media (min-width: 512px) and (max-width: 768px) {
+  .best_choice::after {
+    /* left: 55%; */
+    font-size: 15px;
+  }
 }
 
 .activity_card .img_div {
@@ -373,6 +397,10 @@
 .activity_card .img_div img {
   object-fit: cover;
   height: auto;
+}
+
+.activity_card .content .trip_text {
+  height: 70px;
 }
 
 .img_div {
@@ -487,16 +515,19 @@
 }
 
 .img_1 {
-  background-image: url(./Assets/Social_Proof/social_1.png);
+  background-image: url(./Assets/menem-tours_imgs/clients/client_1.jpg);
 }
 .img_2 {
-  background-image: url(./Assets/Social_Proof/social_2.png);
+  background-image: url(./Assets/menem-tours_imgs/clients/client_2.jpg);
 }
 .img_3 {
-  background-image: url(./Assets/Social_Proof/social_3.png);
+  background-image: url(./Assets/menem-tours_imgs/clients/client_3.jpg);
 }
 .img_4 {
-  background-image: url(./Assets/Social_Proof/social_4.png);
+  background-image: url(./Assets/menem-tours_imgs/clients/client_4.jpg);
+}
+.img_5 {
+  background-image: url(./Assets/menem-tours_imgs/clients/client_5.jpg);
 }
 
 .stars {
@@ -523,7 +554,8 @@
   padding: 60px 20px;
   display: flex;
   border-radius: 15px;
-  background: url("./Assets/Images/urgency.png") center/cover no-repeat;
+  background: url("./Assets/menem-tours_imgs/urgency-section-image-.jpg")
+    center/cover no-repeat;
   justify-content: center;
 }
 
@@ -641,7 +673,8 @@
 .book-overlay {
   background: rgba(0, 0, 0, 0.65);
   padding: 80px 20px;
-  background: url("./Assets/Images/book.png") center/cover no-repeat;
+  background: url("./Assets/menem-tours_imgs/book_now.jpeg") center/cover
+    no-repeat;
   border-radius: 15px;
 }
 
@@ -746,7 +779,9 @@ footer .container .row {
   justify-content: space-between;
   align-items: center;
 }
-
+footer .container .row .logo_div img {
+  height: 100px;
+}
 footer .container .row .logo_div h4 {
   margin-top: 20px;
   opacity: 0.9;

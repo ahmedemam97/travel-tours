@@ -1,3 +1,27 @@
 {
-    "home": "Maison"
+    "home": "Maison",
+    "client_1": {
+        "role": "Chef de projet",
+        "comment": "Opa opa opa pa, comme promis 😄Bon après-midi. Nous étions à Sharm en mars. Je voudrais exprimer ma gratitude à l’équipe Menem Tours pour cette excursion incroyable de safari dans le désert en quad et buggy 🙃, ainsi que pour le vol en parachute (parachute ascensionnel) et la balade en banana boat)))) Tout s’est déroulé à merveille !Et les prix sont tout à fait raisonnables, comparés à ceux proposés par le guide !"
+    },
+
+    "client_2": {
+        "role": "Directeur des opérations",
+        "comment": "Nous sommes allés aux pyramides. Très bon prix : 55 $ par personne, alors que par l’intermédiaire du guide de l’hôtel c’était 120 $, c’est-à-dire plus de deux fois plus cher. Le bus est arrivé à l’heure et tout était organisé à un niveau satisfaisant. Excellent rapport qualité/prix."
+    },
+
+    "client_3": {
+        "role": "Ingénieur des installations",
+        "comment": "Nous avons participé à l’excursion Ras Mohammed et Dahab.Abdul est venu nous chercher à notre hôtel avec un véhicule privé, et le service était excellent.L’excursion était très amusante et comprenait de la nourriture délicieuse.Si vous venez à Sharm El Sheikh, il vous suffit de faire confiance à cette entreprise, ils s’occuperont de tout le reste.Et leurs prix sont vraiment très abordables."
+    },
+
+    "client_4": {
+        "role": "Операционный директор",
+        "comment": "Nous avons fait quatre excursions, et tout s’est parfaitement déroulé, depuis les transferts depuis l’hôtel toujours ponctuels jusqu’aux guides toujours aimables.Fortement recommandé !"
+    },
+
+    "client_5": {
+        "role": "Développeur Web",
+        "comment": "Menem est très accueillant et, surtout, très prévenant.Il offre des services de haute qualité et un excellent suivi.Je lui ai demandé d’organiser trois sorties pour quatre personnes avec quelques demandes spécifiques.Les prestataires de services étaient informés de mes modifications, et Menem m’a contacté le soir pour faire le point.Un immense merci ; nos vacances ont été encore meilleures grâce à vous."
+    }
 }

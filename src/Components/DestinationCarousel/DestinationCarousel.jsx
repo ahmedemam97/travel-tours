@@ -1,8 +1,8 @@
 import Slider from 'react-slick'
-import Img_1 from '../../Assets/Images/destination-1.png'
-import Img_2 from '../../Assets/Images/destination-2.png'
-import Img_3 from '../../Assets/Images/destination-3.png'
-import Img_4 from '../../Assets/Images/destination-4.png'
+import Img_1 from '../../Assets/menem-tours_imgs/trips/Albatraa.jpg'
+import Img_2 from '../../Assets/menem-tours_imgs/trips/Boat.jpg'
+import Img_3 from '../../Assets/menem-tours_imgs/trips/Diving.jpg'
+import Img_4 from '../../Assets/menem-tours_imgs/trips/Dolphins.jpg'
 import MainBtn from '../MainBtn/MainBtn'
 function NextArrow(props) {
     const { onClick } = props;

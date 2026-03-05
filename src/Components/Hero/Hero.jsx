@@ -11,7 +11,7 @@ function Hero() {
             <div className='hero_parent container'>
                 <div className='hero'>
                     <div className="hero-text">
-                        <h2>TripZone For Trips</h2>
+                        <h2>Menem Tours For Trips</h2>
                         <p>Find what's make you happy anytime, anywhere</p>
 
                         <div className="search-btn-wrapper">

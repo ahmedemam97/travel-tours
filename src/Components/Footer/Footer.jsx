@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../../Assets/Images/logo-footer.png'
+import Logo from '../../Assets/menem-tours_imgs/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
@@ -33,10 +33,10 @@ function Footer() {
                             <p className='m-0'>+20 10 10351064 | +201033794941 | +201002500976</p>
                         </div>
 
-                        <div className="envelope data">
+                        {/* <div className="envelope data">
                             <FontAwesomeIcon icon={faEnvelope} />
                             <p className='m-0'>ahmed@gmail.com</p>
-                        </div>
+                        </div> */}
                     </div>
 
                     <div className="social col-lg-2 col-md-3 col-sm-5">
