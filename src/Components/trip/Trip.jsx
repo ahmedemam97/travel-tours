@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
@@ -8,6 +8,7 @@ import ImgTow from '../../Assets/menem-tours_imgs/trips/Albatraa.jpg'
 import styles from "./Trip.module.css";
 
 import emailjs from "@emailjs/browser";
+import TransitionsModal from "../Modal/TransitionsModal";
 
 
 function Trip() {
@@ -17,6 +18,7 @@ function Trip() {
         price: 120,
         img: require('../../Assets/menem-tours_imgs/trips/Rass-Mohammed.jpg'),
     };
+
 
     const [mode, setMode] = useState('book');
     const [form, setForm] = useState({
@@ -28,6 +30,8 @@ function Trip() {
         checkOut: '',
         totalPrice: offer.price,
     });
+    const [openModal, setOpenModal] = useState(false)
+    const navigate = useNavigate();
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -58,7 +62,8 @@ function Trip() {
             process.env.REACT_APP_EMAILJS_PUBLIC_KEY
         )
             .then(() => {
-                alert("Booking Sent Successfully!");
+                navigate('/');
+                setOpenModal(true);
                 console.log(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
             })
             .catch((error) => {
@@ -68,9 +73,14 @@ function Trip() {
             });
     }
 
+    function handleOpenModal() {
+        setOpenModal(true)
+    }
+
     return (
         <>
             <div className="container my-4">
+                <TransitionsModal open={openModal} handleClose={() => setOpenModal(false)} />
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb bg-transparent p-0 mb-2">
                         <li className="breadcrumb-item">
@@ -79,7 +89,6 @@ function Trip() {
                         <li className="breadcrumb-item active" aria-current="page">Tour Info</li>
                     </ol>
                 </nav>
-
                 <div className="row">
                     <div className="col-lg-8">
                         <h1 className="display-6">{offer.title}</h1>
@@ -99,8 +108,8 @@ function Trip() {
 
                         <div className="row mb-4 d-flex justify-content-between">
                             <div className={`col-md-4 col-sm-4 mb-2 ${styles.childImg}`}><img src={offer.img} className="img-fluid rounded" alt="thumb" /></div>
-                            <div className={`col-md-4 col-sm-4 mb-2 ${styles.childImg}`}><img src={ImgOne} className="img-fluid rounded" alt="thumb" /></div>
-                            <div className={`col-md-4 col-sm-4 mb-2 ${styles.childImg}`}><img src={ImgTow} className="img-fluid rounded" alt="thumb" /></div>
+                            <div className={`col-md-4 col-sm-4 mb-2 ${styles.childImg}`}><img src={offer.img} className="img-fluid rounded" alt="thumb" /></div>
+                            <div className={`col-md-4 col-sm-4 mb-2 ${styles.childImg}`}><img src={offer.img} className="img-fluid rounded" alt="thumb" /></div>
                         </div>
 
                         <section className="mb-4">
@@ -135,6 +144,7 @@ function Trip() {
                                 <div className="d-flex mb-3">
                                     <button className={`btn me-2 ${mode === 'book' ? 'btn-primary' : 'btn-outline-secondary'}`} onClick={() => setMode('book')}>Book</button>
                                     <button className={`btn ${mode === 'inquiry' ? 'btn-primary' : 'btn-outline-secondary'}`} onClick={() => setMode('inquiry')}>Inquiry</button>
+
                                 </div>
 
                                 {mode === 'book' ? (
@@ -172,7 +182,7 @@ function Trip() {
                                         </div>
 
                                         <div className="d-grid">
-                                            <button className="btn btn-success">Booking now</button>
+                                            <button onClick={() => handleOpenModal()} className="btn btn-success">Booking now</button>
                                         </div>
                                     </form>
                                 ) : (

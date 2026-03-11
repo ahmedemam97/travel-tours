@@ -28,6 +28,11 @@ function Navbar() {
         };
     }, []);
 
+    const languageNames = {
+        en: "English",
+        fr: "French",
+        rus: "Russian"
+    };
 
     useEffect(() => {
         console.log(translations);
@@ -51,9 +56,24 @@ function Navbar() {
                         <li className="nav-item">
                             <Link className="nav-link" to="/">{translations.home}</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/#ourClients">{translations.ourClients}</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/#offers_cards">{translations.trips}</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/#popular">{translations.popularTrips}</Link>
+                        </li>
+                        <li className="nav-item newOffer">
+                            <Link className="nav-link" to="/#newOffer">{translations.newOffer}</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/#faq">FAQ</Link>
+                        </li>
                     </ul>
 
-                    <ul className="navbar-nav ms-auto align-items-center gap-3">
+                    <ul className="navbar-nav ms-auto align-items-center gap-3 localize">
                         <li
                             className="nav-item d-flex align-items-center gap-2 lang-div"
                             ref={langRef}
@@ -65,7 +85,7 @@ function Navbar() {
                                 onClick={() => setOpenLang(!openLang)}
                                 style={{ cursor: "pointer" }}
                             >
-                                English
+                                {languageNames[language]}
                             </span>
 
                             {openLang && (

@@ -47,6 +47,32 @@
   text-align: center;
 }
 
+.header {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 600;
+  width: fit-content;
+  margin: 0 auto 50px auto;
+}
+
+.header h2 {
+  border-bottom: solid 2px var(--mainColor);
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.header h2::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 2px;
+  background: var(--mainColor);
+}
+
 /* Start Navbar */
 .navbar-nav li a.nav-link:hover {
   color: var(--mainColor);
@@ -69,37 +95,77 @@
   display: block;
 }
 
+.localize {
+  z-index: 10000;
+}
+
 @media (max-width: 576px) {
   nav {
     padding: 10px !important;
   }
 }
+
+.nav-item .nav-link:hover {
+  color: var(--mainColor) !important;
+  border-bottom: solid 2px var(--mainColor);
+}
+
+.newOffer {
+  position: relative;
+}
+
+.newOffer::after {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background-color: red;
+  border: red;
+  border-radius: 50%;
+  right: 6px;
+  top: 6px;
+}
 /* End Navbar */
-/* Hero */
+/* Hero Section */
 .hero_parent {
   background-image: url("./Assets/menem-tours_imgs/hero-section-.jpg");
-  background-repeat: no-repeat, repeat;
-  color: white;
-  /* margin: auto; */
-  height: 80vh;
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: right center;
   border-radius: 35px;
+
+  min-height: 80vh;
   display: flex;
   align-items: center;
-  text-align: center;
+
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
 }
+
+.hero_parent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.5);
+}
+
 .hero {
-  width: 60%;
-  margin: auto; /* padding-top: 100px; */
+  width: 600px;
+  margin-right: auto;
+  color: black;
+  position: relative;
+  z-index: 2;
 }
 
 .hero .hero-text h2 {
   font-size: 55px;
+  line-height: 1.2;
 }
+
 .hero .hero-text p {
-  font-size: 15px;
-  font-weight: bold;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 .where .text .search {
@@ -116,7 +182,7 @@
 
 .scroll-arrow {
   font-size: 54px;
-  color: white;
+  color: black;
   animation: bounce 1.5s infinite;
 }
 
@@ -130,9 +196,41 @@
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 992px) {
+  .hero .hero-text h2 {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 768px) {
   .hero_parent {
-    width: calc(100% - 20px) !important;
+    min-height: 60vh;
+    padding: 30px;
+    background-position: right center;
+  }
+
+  .hero {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+  }
+
+  .hero .hero-text h2 {
+    font-size: 32px;
+  }
+
+  .hero .hero-text p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero .hero-text h2 {
+    font-size: 26px;
+  }
+
+  .scroll-arrow {
+    font-size: 40px;
   }
 }
 /* End Hero Section */
@@ -371,12 +469,24 @@
   position: relative;
 }
 
+.parent_wrapper .parent .best_choice:nth-child(2)::before {
+  content: "Offer";
+  position: absolute;
+  right: 100px;
+  top: 0;
+  background-color: red;
+  color: white;
+  padding: 5px;
+  border-radius: 0 0 10px 10px;
+  z-index: 1000;
+}
+
 .best_choice::after {
-  content: "Best Choice";
+  content: "Popular";
   position: absolute;
   right: 10px;
   top: 0;
-  background-color: red;
+  background-color: green;
   color: white;
   width: fit-content;
   padding: 5px;
@@ -545,7 +655,7 @@
 
 /* Start Urgency Section */
 .urgency-section {
-  padding: 100px 20px;
+  padding: 50px 20px;
   position: relative;
 }
 
@@ -561,7 +671,7 @@
 
 .urgency-card {
   background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(6px);
   padding: 50px;
   border-radius: 25px;
   text-align: center;
@@ -613,6 +723,7 @@
 .scarcity-text {
   margin-bottom: 10px;
   font-size: 15px;
+  color: var(--mainColor);
 }
 
 .progress-bar {
@@ -697,8 +808,8 @@
 }
 
 .book-card {
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
   border-radius: 25px;
   padding: 40px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
@@ -774,13 +885,20 @@ footer {
   padding: 50px 0;
 }
 
-footer .container .row {
+/* footer .container .row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
+} */
 footer .container .row .logo_div img {
-  height: 100px;
+  height: 50px;
+}
+footer .container .row .logo_div .image {
+  width: fit-content;
+  gap: 20px;
+}
+footer .container .row .logo_div .image h3 {
+  margin: 0;
 }
 footer .container .row .logo_div h4 {
   margin-top: 20px;
@@ -798,6 +916,10 @@ footer .container .contact_data .data {
 .social {
   display: flex;
   flex-direction: column;
+}
+
+.social .icons {
+  gap: 10px;
 }
 
 .social h4 {
@@ -832,4 +954,107 @@ footer .container .contact_data .data {
 .social .icons .icon4 {
   background-color: #1da1f2;
 }
+
+/* tablet */
+@media (max-width: 992px) {
+  .logo_div,
+  .contact_data,
+  .social {
+    text-align: center;
+  }
+
+  .logo_div .image {
+    justify-content: center;
+  }
+
+  .contact_data .data {
+    justify-content: center;
+  }
+
+  .social .icons {
+    justify-content: center !important;
+    gap: 10px;
+  }
+}
+
+/* mobile */
+@media (max-width: 576px) {
+  footer {
+    padding: 40px 0;
+  }
+
+  .logo_div img {
+    height: 40px;
+  }
+
+  .contact_data .data {
+    font-size: 14px;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .social h4 {
+    margin-bottom: 10px;
+  }
+}
 /* End Footer */
+/* Whats app */
+.whatsapp_float {
+  position: fixed;
+  bottom: 30px;
+  right: 25px;
+  background-color: #25d366;
+  color: white;
+  font-size: 28px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  transition: 0.3s;
+}
+
+.whatsapp_float:hover {
+  background-color: #1ebe5d;
+  transform: scale(1.1);
+}
+/* End Whats app */
+
+/* ScrollTopBtn */
+
+.scroll_top {
+  position: fixed;
+  bottom: 100px;
+  right: 25px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #ff7a00;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  opacity: 0;
+  transform: translateY(20px) scale(1);
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.scroll_top.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.scroll_top:hover {
+  transform: translateY(0) scale(1.1);
+  transition: transform 0.2s ease;
+  background-color: #e56d00;
+}
+/* End ScrollTopBtn */

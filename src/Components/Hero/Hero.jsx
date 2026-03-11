@@ -1,23 +1,26 @@
+import { useContext } from "react";
 import MainBtn from "../MainBtn/MainBtn"
+import { LangContext } from "../../Context/LangContext";
 function goToTripsSection() {
     document
         .getElementById("offers_cards")
         .scrollIntoView({ behavior: "smooth" });
 }
 function Hero() {
+    const { translations } = useContext(LangContext)
 
     return (
         <div>
             <div className='hero_parent container'>
                 <div className='hero'>
                     <div className="hero-text">
-                        <h2>Menem Tours For Trips</h2>
-                        <p>Find what's make you happy anytime, anywhere</p>
+                        <h2>{translations.hero_header}</h2>
+                        <p>{translations.hero_text}</p>
 
                         <div className="search-btn-wrapper">
                             <MainBtn
-                                text="Search For Trips"
-                                color="lightColor"
+                                text={translations.Discover_Trips}
+                                color="greenColor"
                                 tripData={goToTripsSection}
                             />
 
@@ -26,27 +29,6 @@ function Hero() {
                             </span>
                         </div>
                     </div>
-
-                    {/* <div className="hero-search">
-                        <div className="where">
-                            <FontAwesomeIcon icon={faLocationDot} size="lg" />
-                            <div className='text'>
-                                <span>Where to?</span>
-                                <p className='search'>Search a place or actitivity</p>
-                            </div>
-                        </div>
-
-                        <div className="when">
-                            <FontAwesomeIcon icon={faCalendar} />
-                            <div>
-                                <span>When?</span>
-                                <input type="text" placeholder='Select Dates' />
-                                <Calendar />
-                            </div>
-
-                            <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </div>
-                    </div> */}
                 </div>
             </div>
         </div>

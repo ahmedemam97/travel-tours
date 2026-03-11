@@ -61,7 +61,9 @@ function DestinationCarousel() {
 
     return (
         <div className='container destination my-5 pt-3'>
-            <h2 className='mt-3 mb-4'>Top Destination For Your Next Vacation</h2>
+            <div className="header">
+                <h2>Top Destination For Your Next Vacation</h2>
+            </div>
             <div className="mt-2">
                 <Slider {...settings}>
                     <div className='image'>

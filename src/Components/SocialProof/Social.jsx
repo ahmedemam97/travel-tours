@@ -44,12 +44,12 @@ function Social() {
     ];
 
     return (
-        <section className="social-section py-5">
+        <section className="social-section py-5" id="ourClients">
             <div className="container">
                 <div className="text-center mb-5">
-                    <h2 className="fw-bold">What Our Clients Say</h2>
+                    <h2 className="fw-bold">{translations.What_Our_Clients_Say}</h2>
                     <p className="text-muted">
-                        Trusted by companies across Middle East
+                        {translations.Trusted_by_companies_across_Middle_East}
                     </p>
                 </div>
 

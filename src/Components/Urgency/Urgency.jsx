@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import MainBtn from '../MainBtn/MainBtn';
+import { LangContext } from '../../Context/LangContext';
 
 function Urgency() {
     const [timeLeft, setTimeLeft] = useState({
@@ -7,6 +8,8 @@ function Urgency() {
         minutes: 14,
         seconds: 33,
     });
+
+    const { translations } = useContext(LangContext)
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -33,37 +36,40 @@ function Urgency() {
         return () => clearInterval(timer);
     }, []);
     return (
-        <section className="urgency-section">
+        <section className="urgency-section" id='newOffer'>
+            <div className="header">
+                <h2>{translations.urgency}</h2>
+            </div>
             <div className="urgency-overlay container">
                 <div className="urgency-card">
-                    <span className="badge">🔥 Limited Time Offer</span>
+                    <span className="badge">🔥 {translations.limitedTimeOffer}</span>
 
-                    <h2>Explore Bali With 30% Discount</h2>
+                    <h2>{translations.exploreBaliDiscount}</h2>
 
                     <div className="countdown">
                         <div className="time-box">
                             <h3>{timeLeft.hours.toString().padStart(2, "0")}</h3>
-                            <span>Hours</span>
+                            <span>{translations.hours}</span>
                         </div>
                         <div className="time-box">
                             <h3>{timeLeft.minutes.toString().padStart(2, "0")}</h3>
-                            <span>Minutes</span>
+                            <span>{translations.minutes}</span>
                         </div>
                         <div className="time-box">
                             <h3>{timeLeft.seconds.toString().padStart(2, "0")}</h3>
-                            <span>Seconds</span>
+                            <span>{translations.seconds}</span>
                         </div>
                     </div>
 
                     <p className="scarcity-text">
-                        Only <strong>4 seats</strong> left at this price
+                        {translations.only} <strong>{translations.fourSeats}</strong> left at this price
                     </p>
 
                     <div className="progress-bar">
                         <div className="progress-fill"></div>
                     </div>
 
-                    <MainBtn text="Secure My Seat Now" color="lightColor" />
+                    <MainBtn text={translations.secureMySeat} color="lightColor" />
                 </div>
             </div>
         </section>

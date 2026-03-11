@@ -8,8 +8,21 @@ import Hero from "../Hero/Hero"
 import Social from "../SocialProof/Social"
 import Urgency from "../Urgency/Urgency"
 import { LangContext } from "../../Context/LangContext"
+import { useLocation } from "react-router-dom"
+import WhatsAppBtn from "../WhatsAppBtn/WhatsAppBtn"
+import ScrollTopBtn from "../ScrollTopBtn/ScrollTopBtn"
 
 function Home() {
+    const location = useLocation();
+
+    useEffect(() => {
+        if (location.hash) {
+            const el = document.querySelector(location.hash);
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+    }, [location]);
 
     return (
         <div className="">
@@ -18,9 +31,11 @@ function Home() {
             <Activities />
             <Best />
             <Urgency />
-            <BookNow />
+            {/* <BookNow /> */}
             <FAQS />
-            <DestinationCarousel />
+            <WhatsAppBtn />
+            <ScrollTopBtn />
+            {/* <DestinationCarousel /> */}
             {/* <Offers /> */}
             {/* <Features /> */}
         </div>

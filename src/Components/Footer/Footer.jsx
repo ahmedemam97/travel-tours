@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Logo from '../../Assets/menem-tours_imgs/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
@@ -6,26 +6,27 @@ import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
+import { LangContext } from '../../Context/LangContext';
 
 function Footer() {
+    const { translations } = useContext(LangContext)
     return (
         <footer>
             <div className='container'>
-                <div className="row">
-                    <div className="logo_div col-md-5 col-sm-5">
-                        <div className="image">
+                <div className="row gy-4">
+                    <div className="logo_div col-lg-5 col-md-6 col-12">
+                        <div className="image d-flex align-items-center justify-content-between">
                             <img src={Logo} alt="Logo" />
+                            <h3>Menem Tours</h3>
                         </div>
-                        <h4 className='h6'>Don't just get there, get there in style.</h4>
+                        <h4 className='h6'>{translations.getThereInStyle}</h4>
                     </div>
 
-                    <div className="contact_data col-md-5 col-sm-5">
+                    <div className="contact_data col-lg-5 col-md-6 col-12">
                         <div className="location data">
                             <FontAwesomeIcon icon={faLocationDot} size="lg" />
-                            <p className='m-0'>Sharm Alshikh-
-                                Old Market – In front of Al Sahaba Mosque</p>
+                            <p className='m-0'>{translations.sharmOldMarketAddress}</p>
                         </div>
 
                         <div className="phone data my-3">
@@ -39,8 +40,8 @@ function Footer() {
                         </div> */}
                     </div>
 
-                    <div className="social col-lg-2 col-md-3 col-sm-5">
-                        <h4>Follow Us</h4>
+                    <div className="social col-lg-2 col-md-12 col-12">
+                        <h4>{translations.followUs}</h4>
                         <div className="icons d-flex justify-content-between">
                             <div className="icon icon1">
                                 <FontAwesomeIcon icon={faFacebook} />

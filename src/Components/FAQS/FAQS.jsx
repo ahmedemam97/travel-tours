@@ -1,29 +1,32 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./FAQS.module.css";
+import { LangContext } from '../../Context/LangContext';
+
 
 function FAQS() {
     const [activeIndex, setActiveIndex] = useState(null);
+    const { translations } = useContext(LangContext)
 
     const faqs = [
         {
-            question: "Can I cancel my booking?",
+            question: translations.faq1_question,
             answer:
-                "Yes, you can cancel your booking within 24 hours for a full refund.",
+                translations.faq1_answer,
         },
         {
-            question: "Do you offer group discounts?",
+            question: translations.faq2_question,
             answer:
-                "Yes, we provide special discounts for groups of 5 people or more.",
+                translations.faq2_answer,
         },
         {
-            question: "Is travel insurance included?",
+            question: translations.faq3_question,
             answer:
-                "Travel insurance is optional and can be added during checkout.",
+                translations.faq3_answer,
         },
         {
-            question: "How do I receive my tickets?",
+            question: translations.faq4_question,
             answer:
-                "Your tickets will be sent instantly to your email after payment confirmation.",
+                translations.faq4_answer,
         },
     ];
 
@@ -32,9 +35,11 @@ function FAQS() {
     };
 
     return (
-        <section className={styles.faqSection}>
+        <section className={styles.faqSection} id="faq">
             <div className={styles.container}>
-                <h2 className={styles.title}>Frequently Asked Questions</h2>
+                <div className="header">
+                    <h2 className={`${styles.title}`}>{translations.faq}</h2>
+                </div>
 
                 <div className={styles.faqList}>
                     {faqs.map((faq, index) => (

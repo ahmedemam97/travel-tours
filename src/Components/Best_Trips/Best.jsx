@@ -7,134 +7,50 @@ import { useNavigate } from 'react-router-dom';
 import img_1 from '../../Assets/menem-tours_imgs/trips/Rass-Mohammed.jpg'
 import img_2 from '../../Assets/menem-tours_imgs/trips/Albatraa.jpg'
 import img_3 from '../../Assets/menem-tours_imgs/trips/Safari.jpg'
-import img_4 from '../../Assets/menem-tours_imgs/trips/Dolphins.jpg'
-import img_5 from '../../Assets/menem-tours_imgs/trips/Boat.jpg'
-import img_6 from '../../Assets/menem-tours_imgs/trips/Diving.jpg'
+import { useContext } from 'react';
+import { LangContext } from '../../Context/LangContext';
+
 function Best() {
     const navigate = useNavigate();
     const goToTrip = (offer) => navigate('/trip', { state: offer });
+    const { translations } = useContext(LangContext)
 
     const trips = [
         {
             id: 1,
             imgSrc: img_1,
             title: 'Rass Mohammed',
-            text: 'Where the Red Sea Shows Its True Colors'
+            text: translations.redSeaColors,
+            price: 500
         },
         {
             id: 2,
             imgSrc: img_2,
             title: 'Alpatraa',
-            text: 'Walk Through 2,000 Years of Wonder.'
+            text: translations.walkThroughHistory,
+            price: 600,
+            class: "newOffer"
         },
         {
             id: 3,
             imgSrc: img_3,
-            title: 'Safari Adventure',
-            text: 'Unleash Your Inner Explorer.'
+            title: translations.safariAdventure,
+            text: translations.unleashExplorer,
+            price: 350
         },
 
     ]
 
     return (
-        // <div className='container  my-5 pt-5 offers_cards' id="offers_cards">
-        //     <h2>Best Trips</h2>
-        //     <div className="parent_wrapper">
-        //         <div className="parent">
-        //             <div className=" activity_card p-0 ">
-        //                 <div className="img_div">
-        //                     <img src={img_1} alt="Offer One" />
-        //                 </div>
-
-        //                 <div className="content ">
-        //                     <div className="location">
-        //                         <FontAwesomeIcon icon={faLocationDot} />
-        //                         <p className='m-0 ps-2'>Mountain, Vietnam</p>
-        //                     </div>
-        //                     <h4 className='py-1'>Tokyo Highlights & Mt. Fuji Day Trip</h4>
-        //                     <div className="rating">
-        //                         <div className="icons pe-2 py-1">
-        //                             {[...Array(4)].map((_, i) => (
-        //                                 <FontAwesomeIcon icon={faStar} color='orange' key={i} />
-        //                             ))}
-        //                             <FontAwesomeIcon icon={faStarHalfStroke} color='orange' />
-        //                         </div>
-        //                         <span>(276 reviews)</span>
-        //                     </div>
-
-        //                     <p className='price'>Price: <span>250$</span></p>
-        //                     <div className="button w-100 text-center">
-        //                         <MainBtn text="Book a flight" color="lightColor" tripData={() => goToTrip({ title: 'Tokyo Highlights & Mt. Fuji Day Trip', price: 250, img: img_1 })} />
-        //                     </div>
-        //                 </div>
-        //             </div>
-
-        //             <div className=" activity_card p-0">
-        //                 <div className="img_div">
-        //                     <img src={img_3} alt="Offer One" />
-        //                 </div>
-
-        //                 <div className="content">
-        //                     <div className="location">
-        //                         <FontAwesomeIcon icon={faLocationDot} />
-        //                         <p className='m-0 ps-2'>Mountain, Vietnam</p>
-        //                     </div>
-        //                     <h4 className='py-1'>Tokyo Highlights & Mt. Fuji Day Trip</h4>
-        //                     <div className="rating">
-        //                         <div className="icons pe-2 py-1">
-        //                             {[...Array(4)].map((_, i) => (
-        //                                 <FontAwesomeIcon icon={faStar} color='orange' key={i} />
-        //                             ))}
-        //                             <FontAwesomeIcon icon={faStarHalfStroke} color='orange' />
-        //                         </div>
-        //                         <span>(276 reviews)</span>
-        //                     </div>
-
-        //                     <p className='price'>Price: <span>250$</span></p>
-        //                     <div className="button w-100 text-center">
-        //                         <MainBtn text="Book a flight" color="lightColor" tripData={() => goToTrip({ title: 'Tokyo Highlights & Mt. Fuji Day Trip', price: 250, img: img_3 })} />
-        //                     </div>
-        //                 </div>
-        //             </div>
-
-        //             <div className=" activity_card p-0">
-        //                 <div className="img_div">
-        //                     <img src={img_2} alt="Offer One" />
-        //                 </div>
-
-        //                 <div className="content">
-        //                     <div className="location">
-        //                         <FontAwesomeIcon icon={faLocationDot} />
-        //                         <p className='m-0 ps-2'>Mountain, Vietnam</p>
-        //                     </div>
-        //                     <h4 className='py-1'>Tokyo Highlights & Mt. Fuji Day Trip</h4>
-        //                     <div className="rating">
-        //                         <div className="icons pe-2 py-1">
-        //                             {[...Array(4)].map((_, i) => (
-        //                                 <FontAwesomeIcon icon={faStar} color='orange' key={i} />
-        //                             ))}
-        //                             <FontAwesomeIcon icon={faStarHalfStroke} color='orange' />
-        //                         </div>
-        //                         <span>(276 reviews)</span>
-        //                     </div>
-
-        //                     <p className='price'>Price: <span>250$</span></p>
-        //                     <div className="button w-100 text-center">
-        //                         <MainBtn text="Book a flight" color="lightColor" tripData={() => goToTrip({ title: 'Tokyo Highlights & Mt. Fuji Day Trip', price: 250, img: img_2 })} />
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div >
-
-        <div className='container my-5 pt-5 offers_cards' id="offers_cards">
-            <h2>Best Trips</h2>
+        <div className='container my-5 pt-5 offers_cards' id="popular">
+            <div className="header">
+                <h2>{translations.Explore_Our_Trips}</h2>
+            </div>
             <div className="parent_wrapper">
                 <div className="parent">
 
                     {trips.map((trip) => (
-                        <div key={trip.id} className=" activity_card best_choice p-0 ">
+                        <div key={trip.id} className={`best_choice activity_card p-0 ${trips.class || ''}`}>
                             <div className="img_div">
                                 <img src={trip.imgSrc} alt="Offer One" />
                             </div>
@@ -152,12 +68,12 @@ function Best() {
                                         ))}
                                         <FontAwesomeIcon icon={faStarHalfStroke} color='orange' />
                                     </div>
-                                    <span>(276 reviews)</span>
+                                    <span>(276 {translations.reviews})</span>
                                 </div>
 
-                                <p className='price'>Price: <span>250$</span></p>
+                                <p className='price'>{translations.price}: <span>{trip.price}</span></p>
                                 <div className="button w-100 text-center">
-                                    <MainBtn text="Book a flight" color="lightColor" tripData={() => goToTrip({ title: 'Tokyo Highlights & Mt. Fuji Day Trip', price: 250, img: img_1 })} />
+                                    <MainBtn text={translations.bookFlight} color="lightColor" tripData={() => goToTrip({ title: trip.text, price: trip.price, img: trip.imgSrc })} />
                                 </div>
                             </div>
                         </div>
