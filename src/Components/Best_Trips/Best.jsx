@@ -44,7 +44,7 @@ function Best() {
     return (
         <div className='container my-5 pt-5 offers_cards' id="popular">
             <div className="header">
-                <h2>{translations.Explore_Our_Trips}</h2>
+                <h2>{translations.popularTrips}</h2>
             </div>
             <div className="parent_wrapper">
                 <div className="parent">
