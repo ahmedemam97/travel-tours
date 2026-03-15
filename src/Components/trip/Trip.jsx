@@ -3,14 +3,13 @@ import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import ImgOne from '../../Assets/menem-tours_imgs/trips/Boat.jpg'
-import ImgTow from '../../Assets/menem-tours_imgs/trips/Albatraa.jpg'
 import styles from "./Trip.module.css";
 
 import emailjs from "@emailjs/browser";
 import TransitionsModal from "../Modal/TransitionsModal";
 import { TripContext } from "../../Context/Trips/TripContext";
 import { LangContext } from "../../Context/LangContext";
+import DestinationCarousel from "../DestinationCarousel/DestinationCarousel";
 
 
 function Trip() {
@@ -21,11 +20,14 @@ function Trip() {
     const { Trips } = useContext(TripContext)
     let { id } = useParams();
 
-    const location = useLocation();
+    let tripId = id - 1;
+
+
     const offer = Trips.find(trip => trip.id === Number(id));
+    console.log(tripId);
 
 
-    // Mailjs code
+    ///////////////////// Mailjs code////////////////////
     const [form, setForm] = useState({
         firstName: '',
         lastName: '',
@@ -75,12 +77,18 @@ function Trip() {
                 console.log(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
             });
     }
+    /////////////////////////////////////////////////
 
     function handleOpenModal() {
         setOpenModal(true)
     }
 
     useEffect(() => { console.log(offer); }, [])
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [pathname]);
 
     return (
         <>
@@ -89,32 +97,33 @@ function Trip() {
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb bg-transparent p-0 mb-2">
                         <li className="breadcrumb-item">
-                            <Link to={'/'} >Home</Link>
+                            <Link to={'/'} >{translations.home}</Link>
                         </li>
-                        <li className="breadcrumb-item active" aria-current="page">Tour Info</li>
+                        <li className="breadcrumb-item active" aria-current="page">{translations.tourInfo}</li>
                     </ol>
                 </nav>
-                <div className="row">
+                {Trips[id - 1] ? <div className="row">
                     <div className="col-lg-8">
-                        <h1 className="display-6">{offer.title}</h1>
+                        <h1 className="display-6">{translations[Trips[id - 1].title]}</h1>
+                        <h3 className="">{translations[Trips[id - 1].text]}</h3>
                         <div className="d-flex flex-wrap align-items-center mb-3">
-                            <span className="badge bg-warning text-dark me-2">Featured</span>
-                            <span className="badge bg-danger me-2">Best seller</span>
+                            {Trips[id - 1].popular ? <>
+                                <span className="badge bg-warning text-dark me-2 mb-0">{translations.featured}</span>
+                                <span className="badge bg-danger me-2 mb-0">{translations.bestSeller}</span>
+                            </> : ''}
                             <div className="text-muted me-3">
                                 {[...Array(4)].map((_, i) => (
                                     <FontAwesomeIcon icon={faStar} color='orange' key={i} />
                                 ))}
 
-                                <FontAwesomeIcon icon={faStarHalfStroke} color='orange' /> <small className="text-muted">(2467 reviews)</small></div>
+                                <FontAwesomeIcon icon={faStarHalfStroke} color='orange' /> <small className="text-muted">({Trips[id - 1].reviewsCount} reviews)</small></div>
                             <div className="text-muted">• Las Vegas, United States • <span className="fw-bold">1.5k booked</span></div>
                         </div>
 
                         <img src={offer.img} alt={offer.title} className={`img-fluid rounded mb-3 ${styles.mainImg}`} />
 
                         <div className="row mb-4 d-flex justify-content-between">
-                            <div className={`col-md-4 col-sm-4 mb-2 ${styles.childImg}`}><img src={offer.img} className="img-fluid rounded" alt="thumb" /></div>
-                            <div className={`col-md-4 col-sm-4 mb-2 ${styles.childImg}`}><img src={offer.img} className="img-fluid rounded" alt="thumb" /></div>
-                            <div className={`col-md-4 col-sm-4 mb-2 ${styles.childImg}`}><img src={offer.img} className="img-fluid rounded" alt="thumb" /></div>
+                            <DestinationCarousel id={Trips[id - 1].id} />
                         </div>
 
                         <section className="mb-4">
@@ -209,7 +218,7 @@ function Trip() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> : ''}
             </div>
 
         </>

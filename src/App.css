@@ -936,6 +936,8 @@ footer .container .contact_data .data {
   align-items: center;
   cursor: pointer;
   transition: 0.3s;
+  border: solid 1px white;
+  color: white;
 }
 
 .social .icons .icon:hover {
@@ -949,10 +951,7 @@ footer .container .contact_data .data {
   background-color: #cf3881;
 }
 .social .icons .icon3 {
-  background-color: #ff0000;
-}
-.social .icons .icon4 {
-  background-color: #1da1f2;
+  background-color: black;
 }
 
 /* tablet */
@@ -977,6 +976,12 @@ footer .container .contact_data .data {
   }
 }
 
+@media (max-width: 768px) {
+  .logo_div .image {
+    margin: auto;
+  }
+}
+
 /* mobile */
 @media (max-width: 576px) {
   footer {
@@ -988,8 +993,9 @@ footer .container .contact_data .data {
   }
 
   .contact_data .data {
-    font-size: 14px;
-    flex-direction: column;
+    font-size: 13px !important;
+    flex-direction: row;
+    align-items: center;
     gap: 5px;
   }
 

@@ -10,7 +10,6 @@ import { TripContext } from '../../Context/Trips/TripContext';
 function Activities() {
 
     const navigate = useNavigate();
-    const goToTrip = (offer) => navigate('/trip', { state: offer });
     const { translations } = useContext(LangContext)
     const { Trips } = useContext(TripContext)
 
@@ -25,7 +24,6 @@ function Activities() {
             </div>
             <div className="parent_wrapper">
                 <div className="parent">
-
                     {Trips.map((trip) => (
                         <div key={trip.id} className=" activity_card p-0 ">
                             <div className="img_div">

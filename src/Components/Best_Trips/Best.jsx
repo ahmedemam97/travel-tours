@@ -7,13 +7,15 @@ import { useNavigate } from 'react-router-dom';
 import img_1 from '../../Assets/menem-tours_imgs/trips/Rass-Mohammed.jpg'
 import img_2 from '../../Assets/menem-tours_imgs/trips/Albatraa.jpg'
 import img_3 from '../../Assets/menem-tours_imgs/trips/Safari.jpg'
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { LangContext } from '../../Context/LangContext';
+import { TripContext } from '../../Context/Trips/TripContext';
 
 function Best() {
     const navigate = useNavigate();
     const goToTrip = (offer) => navigate('/trip', { state: offer });
     const { translations } = useContext(LangContext)
+    const { Trips } = useContext(TripContext)
 
     const trips = [
         {
@@ -41,6 +43,11 @@ function Best() {
 
     ]
 
+    useEffect(() => {
+        console.log(Trips);
+    }, [])
+
+
     return (
         <div className='container my-5 pt-5 offers_cards' id="popular">
             <div className="header">
@@ -49,18 +56,18 @@ function Best() {
             <div className="parent_wrapper">
                 <div className="parent">
 
-                    {trips.map((trip) => (
-                        <div key={trip.id} className={`best_choice activity_card p-0 ${trips.class || ''}`}>
+                    {Trips.map((trip) => (
+                        trip.popular ? (<div key={trip.id} className={`best_choice activity_card p-0 ${trips.class || ''}`}>
                             <div className="img_div">
-                                <img src={trip.imgSrc} alt="Offer One" />
+                                <img src={trip.img} alt="Offer One" />
                             </div>
 
                             <div className="content ">
                                 <div className="location">
                                     <FontAwesomeIcon icon={faLocationDot} />
-                                    <p className='m-0 ps-2'>{trip.title}</p>
+                                    <p className='m-0 ps-2'>{translations[trip.title]}</p>
                                 </div>
-                                <h4 className='py-1 trip_text'>{trip.text}</h4>
+                                <h4 className='py-1 trip_text'>{translations[trip.text]}</h4>
                                 <div className="rating">
                                     <div className="icons pe-2 py-1">
                                         {[...Array(4)].map((_, i) => (
@@ -73,10 +80,10 @@ function Best() {
 
                                 <p className='price'>{translations.price}: <span>{trip.price}</span></p>
                                 <div className="button w-100 text-center">
-                                    <MainBtn text={translations.bookFlight} color="lightColor" tripData={() => goToTrip({ title: trip.text, price: trip.price, img: trip.imgSrc })} />
+                                    <MainBtn text={translations.bookFlight} color="lightColor" tripData={() => navigate(`trip/${trip.id}`)} />
                                 </div>
                             </div>
-                        </div>
+                        </div>) : ""
                     ))}
 
                 </div>

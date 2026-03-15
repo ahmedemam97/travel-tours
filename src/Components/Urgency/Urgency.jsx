@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import MainBtn from '../MainBtn/MainBtn';
 import { LangContext } from '../../Context/LangContext';
+import { useNavigate } from 'react-router-dom';
 
 function Urgency() {
     const [timeLeft, setTimeLeft] = useState({
@@ -8,6 +9,7 @@ function Urgency() {
         minutes: 14,
         seconds: 33,
     });
+    let navigate = useNavigate();
 
     const { translations } = useContext(LangContext)
 
@@ -69,7 +71,9 @@ function Urgency() {
                         <div className="progress-fill"></div>
                     </div>
 
-                    <MainBtn text={translations.secureMySeat} color="lightColor" />
+                    <div className="button w-100 text-center">
+                        <MainBtn text={translations.secureMySeat} color="lightColor" tripData={() => navigate(`trip/2`)} />
+                    </div>
                 </div>
             </div>
         </section>

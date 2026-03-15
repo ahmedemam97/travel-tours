@@ -34,11 +34,6 @@ function Navbar() {
         rus: "Russian"
     };
 
-    useEffect(() => {
-        console.log(translations);
-    }, [language]);
-
-
     return (
         <div>
             <nav className="navbar navbar-expand-lg fw-bold container">

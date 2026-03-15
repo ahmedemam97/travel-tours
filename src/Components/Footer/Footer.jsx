@@ -2,12 +2,13 @@ import React, { useContext } from 'react'
 import Logo from '../../Assets/menem-tours_imgs/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
+import { faTiktok, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";
 import { LangContext } from '../../Context/LangContext';
+import { Link } from 'react-router-dom';
 
 function Footer() {
     const { translations } = useContext(LangContext)
@@ -43,23 +44,36 @@ function Footer() {
                     <div className="social col-lg-2 col-md-12 col-12">
                         <h4>{translations.followUs}</h4>
                         <div className="icons d-flex justify-content-between">
-                            <div className="icon icon1">
+
+                            <Link
+                                href="https://www.facebook.com/profile.php?id=100066385935958"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="icon icon1"
+                            >
                                 <FontAwesomeIcon icon={faFacebook} />
-                            </div>
+                            </Link>
 
-                            <div className="icon icon2">
+                            <Link
+                                href="https://www.instagram.com/menem.tours/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="icon icon2"
+                            >
                                 <FontAwesomeIcon icon={faInstagram} />
+                            </Link>
 
-                            </div>
+                            <Link
+                                href="https://www.tiktok.com/@menem.tours?_r=1&_t=ZS-94gn3TxQTL8"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="icon icon3"
+                            >
+                                <FontAwesomeIcon icon={faTiktok} />
+                            </Link>
 
-                            <div className="icon icon3">
-                                <FontAwesomeIcon icon={faYoutube} />
-                            </div>
-
-                            <div className="icon icon4">
-                                <FontAwesomeIcon icon={faTwitter} />
-                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
