@@ -1,7 +1,19 @@
 import { createContext } from "react";
+import TripsData from "./trips.json";
+import { tripImages } from "../../Context/Trips/utils";
 
-export let TripContext = createContext();
+export const TripContext = createContext();
 
-export default function TripContextProvider() {
-  <TripContext.Provider value={{}}></TripContext.Provider>;
+export default function TripContextProvider({ children }) {
+
+  const Trips = TripsData.map(trip => ({
+    ...trip,
+    img: tripImages[trip.img]
+  }));
+
+  return (
+    <TripContext.Provider value={{ Trips }}>
+      {children}
+    </TripContext.Provider>
+  );
 }

@@ -4,6 +4,7 @@ import Home from "./Components/Home/Home";
 import Trip from "./Components/trip/Trip";
 import Layout from "./Components/Layout/Layout";
 import { LangContextProvider } from "./Context/LangContext";
+import TripContextProvider from "./Context/Trips/TripContext";
 
 function App() {
   const routers = createBrowserRouter([
@@ -12,14 +13,16 @@ function App() {
       element: <Layout />,
       children: [
         { index: true, element: <Home /> },
-        { path: "trip", element: <Trip /> },
+        { path: "trip/:id", element: <Trip /> },
       ],
     },
   ]);
 
   return (
     <LangContextProvider>
-      <RouterProvider router={routers} />
+      <TripContextProvider>
+        <RouterProvider router={routers} />
+      </TripContextProvider>
     </LangContextProvider>
   );
 }

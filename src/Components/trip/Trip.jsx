@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
@@ -9,18 +9,23 @@ import styles from "./Trip.module.css";
 
 import emailjs from "@emailjs/browser";
 import TransitionsModal from "../Modal/TransitionsModal";
+import { TripContext } from "../../Context/Trips/TripContext";
+import { LangContext } from "../../Context/LangContext";
 
 
 function Trip() {
-    const location = useLocation();
-    const offer = location.state || {
-        title: 'Small-Group Antelope Canyon & Horseshoe Bend Tour from Las Vegas',
-        price: 120,
-        img: require('../../Assets/menem-tours_imgs/trips/Rass-Mohammed.jpg'),
-    };
-
-
     const [mode, setMode] = useState('book');
+    const navigate = useNavigate();
+    const [openModal, setOpenModal] = useState(false);
+    const { translations } = useContext(LangContext)
+    const { Trips } = useContext(TripContext)
+    let { id } = useParams();
+
+    const location = useLocation();
+    const offer = Trips.find(trip => trip.id === Number(id));
+
+
+    // Mailjs code
     const [form, setForm] = useState({
         firstName: '',
         lastName: '',
@@ -28,10 +33,8 @@ function Trip() {
         email: '',
         checkIn: '',
         checkOut: '',
-        totalPrice: offer.price,
+        totalPrice: offer?.price || 0
     });
-    const [openModal, setOpenModal] = useState(false)
-    const navigate = useNavigate();
 
     function handleChange(e) {
         const { name, value } = e.target;
@@ -76,6 +79,8 @@ function Trip() {
     function handleOpenModal() {
         setOpenModal(true)
     }
+
+    useEffect(() => { console.log(offer); }, [])
 
     return (
         <>

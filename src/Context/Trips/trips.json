@@ -1,0 +1,61 @@
+[
+  {
+    "id": 1,
+    "img": "Rass-Mohammed.jpg",
+    "title": "rasMohammed",
+    "text": "redSeaColors",
+    "price": 500
+  },
+  {
+    "id": 2,
+    "img": "Albatraa.jpg",
+    "title": "albatraa",
+    "text": "walkThroughHistory",
+    "price": 600
+  },
+  {
+    "id": 3,
+    "img": "Safari.jpg",
+    "title": "safariAdventure",
+    "text": "unleashExplorer",
+    "price": 350
+  },
+
+  {
+  "id": 4,
+  "img": "Dolphins.jpg",
+  "title": "swimWithDolphins",
+  "text": "onceInALifetime",
+  "price": 860,
+  "reviewImgs": {
+    "img_1": "",
+    "img_2": "",
+    "img_3": ""
+  }
+},
+{
+  "id": 5,
+  "img": "Boat.jpg",
+  "title": "boatTours",
+  "text": "liveTheSea",
+  "price": 900,
+  "reviewImgs": {
+    "img_1": "",
+    "img_2": "",
+    "img_3": ""
+  }
+},
+{
+  "id": 6,
+  "img": "Diving.jpg",
+  "title": "diving",
+  "text": "deepAdventure",
+  "price": 770,
+  "reviewImgs": {
+    "img_1": "",
+    "img_2": "",
+    "img_3": ""
+  }
+}
+
+]
