@@ -9,24 +9,44 @@ function FAQS() {
 
     const faqs = [
         {
-            question: translations.faq1_question,
+            question: translations.howToBook,
             answer:
-                translations.faq1_answer,
+                translations.howToBookDetail,
         },
         {
-            question: translations.faq2_question,
+            question: translations.howToPay,
             answer:
-                translations.faq2_answer,
+                translations.howToPayDetail,
         },
         {
-            question: translations.faq3_question,
+            question: translations.bookTrip,
             answer:
-                translations.faq3_answer,
+                translations.bookTripDetail,
         },
         {
-            question: translations.faq4_question,
+            question: translations.faqTransportQuestion,
             answer:
-                translations.faq4_answer,
+                translations.faqTransportAnswer,
+        },
+        {
+            question: translations.faqBeginnerQuestion,
+            answer:
+                translations.faqBeginnerAnswer,
+        },
+        {
+            question: translations.faqBringQuestion,
+            answer:
+                translations.faqBringAnswer,
+        },
+        {
+            question: translations.faqSafetyQuestion,
+            answer:
+                translations.faqSafetyAnswer,
+        },
+        {
+            question: translations.faqCancelQuestion,
+            answer:
+                translations.faqCancelAnswer,
         },
     ];
 

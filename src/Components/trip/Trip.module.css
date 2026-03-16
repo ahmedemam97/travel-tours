@@ -1,4 +1,3 @@
-/* Start Trip Page Style */
 .mainImg {
   width: 100%;
   height: 350px !important;
@@ -14,4 +13,7 @@
     margin: auto;
   }
 }
-/* End Trip Page Style */
+
+.listEle {
+  list-style-type: none;
+}

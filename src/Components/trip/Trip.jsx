@@ -13,7 +13,7 @@ import DestinationCarousel from "../DestinationCarousel/DestinationCarousel";
 
 
 function Trip() {
-    const [mode, setMode] = useState('book');
+    const [modalStatus, setModalStatus] = useState('success');
     const navigate = useNavigate();
     const [openModal, setOpenModal] = useState(false);
     const { translations } = useContext(LangContext)
@@ -45,10 +45,14 @@ function Trip() {
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log(e);
-        console.log(form);
 
+        const isComplete = form.firstName && form.lastName && form.phone && form.email && form.checkIn && form.checkOut;
 
+        if (!isComplete) {
+            setModalStatus('error');
+            setOpenModal(true);
+            return;
+        }
 
         emailjs.send(
             "service_d4px7wb",
@@ -63,18 +67,17 @@ function Trip() {
                 dateTo: form.checkOut,
                 totalPrice: form.totalPrice,
             },
-
             process.env.REACT_APP_EMAILJS_PUBLIC_KEY
         )
             .then(() => {
-                navigate('/');
+                setModalStatus('success');
                 setOpenModal(true);
                 console.log(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
+                navigate('/');
             })
             .catch((error) => {
                 console.error("FAILED...", error);
                 alert("Something went wrong");
-                console.log(process.env.REACT_APP_EMAILJS_PUBLIC_KEY);
             });
     }
     /////////////////////////////////////////////////
@@ -93,7 +96,7 @@ function Trip() {
     return (
         <>
             <div className="container my-4">
-                <TransitionsModal open={openModal} handleClose={() => setOpenModal(false)} />
+                <TransitionsModal open={openModal} handleClose={() => setOpenModal(false)} status={modalStatus} />
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb bg-transparent p-0 mb-2">
                         <li className="breadcrumb-item">
@@ -105,7 +108,7 @@ function Trip() {
                 {Trips[id - 1] ? <div className="row">
                     <div className="col-lg-8">
                         <h1 className="display-6">{translations[Trips[id - 1].title]}</h1>
-                        <h3 className="">{translations[Trips[id - 1].text]}</h3>
+                        <h3 className="">{translations[Trips[id - 1].tripHeader]}</h3>
                         <div className="d-flex flex-wrap align-items-center mb-3">
                             {Trips[id - 1].popular ? <>
                                 <span className="badge bg-warning text-dark me-2 mb-0">{translations.featured}</span>
@@ -127,94 +130,131 @@ function Trip() {
                         </div>
 
                         <section className="mb-4">
-                            <h3>Overview</h3>
-                            <p>This expertly guided small-group tour takes you to Antelope Canyon and Horseshoe Bend. Enjoy scenic views, learn about the geology, and take plenty of photos. The tour includes round-trip transportation from Las Vegas and a local guide.</p>
+                            <h3>{translations.overview}</h3>
+                            <p>{translations[Trips[id - 1].overView.desc_1]}</p>
+                            <p>{translations[Trips[id - 1].overView.desc_2]}</p>
+                            <p>{translations[Trips[id - 1].overView.desc_3]}</p>
                         </section>
 
                         <section className="mb-4">
-                            <h3>What's included</h3>
-                            <ul>
-                                <li>Round-trip transportation from Las Vegas</li>
-                                <li>Professional local guide</li>
-                                <li>Park entrance fees</li>
-                                <li>Bottled water and light snacks</li>
+                            <h3>{translations.whatsIncluded}</h3>
+                            <ul className="p-0">
+                                {Trips[id - 1].includedList.map((ele) => (
+                                    <li className={styles.listEle}>✔ {translations[ele]}</li>
+                                ))}
                             </ul>
                         </section>
 
                         <section className="mb-4">
-                            <h3>Additional information</h3>
-                            <p>Wear comfortable shoes and bring a hat. The tour involves walking on uneven surfaces. Not recommended for travelers with severe mobility issues.</p>
+                            <h3>{translations.goodToKnow}</h3>
+                            <ul className="p-0">
+                                {Trips[id - 1].goodToKnow.map((ele) => (
+                                    <li className={styles.listEle}>✔ {translations[ele]}</li>
+                                ))}
+                            </ul>
                         </section>
 
                         <section className="mb-5">
-                            <h3>Cancellation policy</h3>
-                            <p>Free cancellation up to 48 hours before departure. For cancellations within 48 hours, a partial refund may apply. Check terms at booking.</p>
+                            <h3>{translations.cancellationPolicy}</h3>
+                            <p>{translations.cancellationPolicy1}</p>
                         </section>
                     </div>
 
                     <div className="col-lg-4">
                         <div className="card sticky-top" style={{ top: '20px' }}>
                             <div className="card-body">
-                                <div className="d-flex mb-3">
-                                    <button className={`btn me-2 ${mode === 'book' ? 'btn-primary' : 'btn-outline-secondary'}`} onClick={() => setMode('book')}>Book</button>
-                                    <button className={`btn ${mode === 'inquiry' ? 'btn-primary' : 'btn-outline-secondary'}`} onClick={() => setMode('inquiry')}>Inquiry</button>
+                                <h5 className="mb-3 text-center">Book Your Trip</h5>
 
-                                </div>
+                                <form onSubmit={handleSubmit}>
+                                    <div className="row">
+                                        <div className="col-6 mb-2">
+                                            <input
+                                                name="firstName"
+                                                value={form.firstName}
+                                                onChange={handleChange}
+                                                required
+                                                className="form-control"
+                                                placeholder="First name"
+                                            />
+                                        </div>
+                                        <div className="col-6 mb-2">
+                                            <input
+                                                name="lastName"
+                                                value={form.lastName}
+                                                onChange={handleChange}
+                                                required
+                                                className="form-control"
+                                                placeholder="Last name"
+                                            />
+                                        </div>
+                                    </div>
 
-                                {mode === 'book' ? (
-                                    <form onSubmit={handleSubmit}>
-                                        <div className="row">
-                                            <div className="col-6 mb-2">
-                                                <input name="firstName" value={form.firstName} onChange={handleChange} required className="form-control" placeholder="First name" />
-                                            </div>
-                                            <div className="col-6 mb-2">
-                                                <input name="lastName" value={form.lastName} onChange={handleChange} required className="form-control" placeholder="Last name" />
-                                            </div>
-                                        </div>
+                                    <div className="mb-2">
+                                        <input
+                                            name="phone"
+                                            value={form.phone}
+                                            onChange={handleChange}
+                                            required
+                                            className="form-control"
+                                            placeholder="Phone"
+                                        />
+                                    </div>
 
-                                        <div className="mb-2">
-                                            <input name="phone" value={form.phone} onChange={handleChange} required className="form-control" placeholder="Phone" />
-                                        </div>
-                                        <div className="mb-2">
-                                            <input name="email" value={form.email} onChange={handleChange} required className="form-control" placeholder="Email" type="email" />
-                                        </div>
+                                    <div className="mb-2">
+                                        <input
+                                            name="email"
+                                            value={form.email}
+                                            onChange={handleChange}
+                                            required
+                                            className="form-control"
+                                            placeholder="Email"
+                                            type="email"
+                                        />
+                                    </div>
 
-                                        <div className="row">
-                                            <div className="col-6 mb-2">
-                                                <label className="form-label small">Date</label>
-                                                <input name="checkIn" value={form.checkIn} onChange={handleChange} className="form-control" type="date" />
-                                            </div>
-                                            <div className="col-6 mb-2">
-                                                <label className="form-label small">Return</label>
-                                                <input name="checkOut" value={form.checkOut} onChange={handleChange} className="form-control" type="date" />
-                                            </div>
+                                    <div className="row">
+                                        <div className="col-6 mb-2">
+                                            <label className="form-label small">Date</label>
+                                            <input
+                                                name="checkIn"
+                                                value={form.checkIn}
+                                                onChange={handleChange}
+                                                className="form-control"
+                                                type="date"
+                                            />
                                         </div>
+                                        <div className="col-6 mb-2">
+                                            <label className="form-label small">Return</label>
+                                            <input
+                                                name="checkOut"
+                                                value={form.checkOut}
+                                                onChange={handleChange}
+                                                className="form-control"
+                                                type="date"
+                                            />
+                                        </div>
+                                    </div>
 
-                                        <div className="mb-2">
-                                            <label className="form-label small">Total price</label>
-                                            <input name="totalPrice" value={form.totalPrice} onChange={handleChange} className="form-control" readOnly />
-                                        </div>
+                                    <div className="mb-2">
+                                        <label className="form-label small">Total price</label>
+                                        <input
+                                            name="totalPrice"
+                                            value={form.totalPrice}
+                                            className="form-control"
+                                            readOnly
+                                        />
+                                    </div>
 
-                                        <div className="d-grid">
-                                            <button onClick={() => handleOpenModal()} className="btn btn-success">Booking now</button>
-                                        </div>
-                                    </form>
-                                ) : (
-                                    <form onSubmit={(e) => { e.preventDefault(); alert('Inquiry sent (demo)'); }}>
-                                        <div className="mb-2">
-                                            <input className="form-control" placeholder="Your name" required />
-                                        </div>
-                                        <div className="mb-2">
-                                            <input className="form-control" placeholder="Email" type="email" required />
-                                        </div>
-                                        <div className="mb-2">
-                                            <textarea className="form-control" placeholder="Your message" rows="4" />
-                                        </div>
-                                        <div className="d-grid">
-                                            <button className="btn btn-primary">Send inquiry</button>
-                                        </div>
-                                    </form>
-                                )}
+                                    <div className="d-grid">
+                                        <button
+                                            type="submit"
+                                            onClick={handleOpenModal}
+                                            className="btn btn-success"
+                                        >
+                                            Booking now
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
