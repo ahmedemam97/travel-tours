@@ -72,7 +72,7 @@ function Urgency() {
                     </div>
 
                     <div className="button w-100 text-center">
-                        <MainBtn text={translations.secureMySeat} color="lightColor" tripData={() => navigate(`trip/2`)} />
+                        <MainBtn text={translations.secureMySeat} color="lightColor" tripData={() => navigate(`trip/1`)} />
                     </div>
                 </div>
             </div>

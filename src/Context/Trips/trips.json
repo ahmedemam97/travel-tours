@@ -8,11 +8,11 @@
     "popular": true,
     "reviewsCount": 3366,
     "tripHeader": "rasMohammedTour",
-    "overView": {
-      "desc_1": "rasMohammedDescription1",
-      "desc_2": "rasMohammedDescription2",
-      "desc_3": "rasMohammedDescription3"
-    },
+    "overView": [
+      "rasMohammedDescription1",
+      "rasMohammedDescription2",
+      "rasMohammedDescription3"
+    ],
     "includedList": [
       "rasMohammedInclude1",
       "rasMohammedInclude2",
@@ -37,11 +37,7 @@
     "reviewsCount": 3122,
     "class": "newOffer",
     "tripHeader": "petraTour",
-    "overView": {
-      "desc_1": "petraDescription",
-      "desc_2": "petraDescription2",
-      "desc_3": "petraDescription3"
-    },
+    "overView": ["petraDescription", "petraDescription2", "petraDescription3"],
     "includedList": [
       "petraInclude1",
       "petraInclude2",
@@ -65,11 +61,11 @@
     "popular": true,
     "reviewsCount": 2944,
     "tripHeader": "safariAdventureTour",
-    "overView": {
-      "desc_1": "safariDescription1",
-      "desc_2": "safariDescription2",
-      "desc_3": "safariDescription3"
-    },
+    "overView": [
+      "safariDescription1",
+      "safariDescription2",
+      "safariDescription3"
+    ],
     "includedList": [
       "safariInclude1",
       "safariInclude2",
@@ -94,11 +90,11 @@
     "popular": false,
     "reviewsCount": 2356,
     "tripHeader": "dolphinHouseTour",
-    "overView": {
-      "desc_1": "dolphinDescription1",
-      "desc_2": "dolphinDescription2",
-      "desc_3": "dolphinDescription3"
-    },
+    "overView": [
+      "dolphinDescription1",
+      "dolphinDescription2",
+      "dolphinDescription3"
+    ],
     "includedList": [
       "dolphinInclude1",
       "dolphinInclude2",
@@ -123,11 +119,7 @@
     "popular": false,
     "reviewsCount": 1800,
     "tripHeader": "boatTrip",
-    "overView": {
-      "desc_1": "boatDescription1",
-      "desc_2": "boatDescription2",
-      "desc_3": "boatDescription3"
-    },
+    "overView": ["boatDescription1", "boatDescription2", "boatDescription3"],
     "includedList": [
       "boatInclude1",
       "boatInclude2",
@@ -152,11 +144,11 @@
     "popular": false,
     "reviewsCount": 2100,
     "tripHeader": "divingAdventure",
-    "overView": {
-      "desc_1": "divingDescription1",
-      "desc_2": "divingDescription2",
-      "desc_3": "divingDescription3"
-    },
+    "overView": [
+      "divingDescription1",
+      "divingDescription2",
+      "divingDescription3"
+    ],
     "includedList": [
       "divingInclude1",
       "divingInclude2",

@@ -80,7 +80,7 @@ function Best() {
 
                                 <p className='price'>{translations.price}: <span>{trip.price}</span></p>
                                 <div className="button w-100 text-center">
-                                    <MainBtn text={translations.bookFlight} color="lightColor" tripData={() => navigate(`trip/${trip.id}`)} />
+                                    <MainBtn text={translations.bookNow} color="lightColor" tripData={() => navigate(`trip/${trip.id}`)} />
                                 </div>
                             </div>
                         </div>) : ""

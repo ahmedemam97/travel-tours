@@ -17,3 +17,9 @@
 .listEle {
   list-style-type: none;
 }
+
+@media (max-width: 578px) {
+  .rating {
+    margin-bottom: 0;
+  }
+}

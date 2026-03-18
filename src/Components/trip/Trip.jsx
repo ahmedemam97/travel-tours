@@ -114,13 +114,15 @@ function Trip() {
                                 <span className="badge bg-warning text-dark me-2 mb-0">{translations.featured}</span>
                                 <span className="badge bg-danger me-2 mb-0">{translations.bestSeller}</span>
                             </> : ''}
-                            <div className="text-muted me-3">
+                            <div className="text-muted me-3 rating">
                                 {[...Array(4)].map((_, i) => (
                                     <FontAwesomeIcon icon={faStar} color='orange' key={i} />
                                 ))}
 
+
                                 <FontAwesomeIcon icon={faStarHalfStroke} color='orange' /> <small className="text-muted">({Trips[id - 1].reviewsCount} reviews)</small></div>
-                            <div className="text-muted">• Las Vegas, United States • <span className="fw-bold">1.5k booked</span></div>
+                            {/* <div className="text-muted">• Las Vegas, United States • <span className="fw-bold">1.5k booked</span></div> */}
+
                         </div>
 
                         <img src={offer.img} alt={offer.title} className={`img-fluid rounded mb-3 ${styles.mainImg}`} />
@@ -131,9 +133,11 @@ function Trip() {
 
                         <section className="mb-4">
                             <h3>{translations.overview}</h3>
-                            <p>{translations[Trips[id - 1].overView.desc_1]}</p>
-                            <p>{translations[Trips[id - 1].overView.desc_2]}</p>
-                            <p>{translations[Trips[id - 1].overView.desc_3]}</p>
+                            {Trips[id - 1].overView.map((desc) => (
+                                <p key={desc}>
+                                    {translations[desc]}
+                                </p>
+                            ))}
                         </section>
 
                         <section className="mb-4">
