@@ -44,32 +44,32 @@ function Footer() {
                         <h4>{translations.followUs}</h4>
                         <div className="icons d-flex justify-content-between">
 
-                            <Link
+                            <a
                                 href="https://www.facebook.com/profile.php?id=100066385935958"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="icon icon1"
                             >
                                 <FontAwesomeIcon icon={faFacebook} />
-                            </Link>
+                            </a>
 
-                            <Link
+                            <a
                                 href="https://www.instagram.com/menem.tours/"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="icon icon2"
                             >
                                 <FontAwesomeIcon icon={faInstagram} />
-                            </Link>
+                            </a>
 
-                            <Link
+                            <a
                                 href="https://www.tiktok.com/@menem.tours?_r=1&_t=ZS-94gn3TxQTL8"
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="icon icon3"
                             >
                                 <FontAwesomeIcon icon={faTiktok} />
-                            </Link>
+                            </a>
 
                         </div>
 
