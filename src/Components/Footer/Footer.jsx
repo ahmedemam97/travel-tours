@@ -2,8 +2,7 @@ import React, { useContext } from 'react'
 import Logo from '../../Assets/menem-tours_imgs/logo.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { faTiktok, faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faTiktok } from "@fortawesome/free-brands-svg-icons";
 import { faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { faFacebook } from "@fortawesome/free-brands-svg-icons";
 import { faPhone } from "@fortawesome/free-solid-svg-icons";

@@ -13,7 +13,6 @@ import { TripContext } from '../../Context/Trips/TripContext';
 
 function Best() {
     const navigate = useNavigate();
-    const goToTrip = (offer) => navigate('/trip', { state: offer });
     const { translations } = useContext(LangContext)
     const { Trips } = useContext(TripContext)
 
@@ -42,10 +41,6 @@ function Best() {
         },
 
     ]
-
-    useEffect(() => {
-        console.log(Trips);
-    }, [])
 
 
     return (

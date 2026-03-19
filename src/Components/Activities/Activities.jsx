@@ -4,7 +4,7 @@ import { faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import MainBtn from '../MainBtn/MainBtn';
 import { useNavigate } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { LangContext } from '../../Context/LangContext';
 import { TripContext } from '../../Context/Trips/TripContext';
 function Activities() {
@@ -12,10 +12,6 @@ function Activities() {
     const navigate = useNavigate();
     const { translations } = useContext(LangContext)
     const { Trips } = useContext(TripContext)
-
-    useEffect(() => {
-        console.log(Trips);
-    }, [])
 
     return (
         <div className='container my-5 pt-5 offers_cards' id="offers_cards">

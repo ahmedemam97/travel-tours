@@ -1,7 +1,6 @@
 import Slider from 'react-slick'
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import { TripContext } from '../../Context/Trips/TripContext'
-import { LangContext } from '../../Context/LangContext'
 function NextArrow(props) {
 
 
@@ -25,7 +24,6 @@ function PrevArrow(props) {
 
 function DestinationCarousel({ id }) {
 
-    const { translations } = useContext(LangContext);
     const { Trips } = useContext(TripContext);
 
     const trip = Trips.find(t => t.id === id);
@@ -56,9 +54,6 @@ function DestinationCarousel({ id }) {
         ],
     };
 
-    useEffect(() => {
-        console.log(trip);
-    }, [])
 
     return (
         < div className='container destination my-5 pt-3' >

@@ -86,7 +86,6 @@ function Trip() {
         setOpenModal(true)
     }
 
-    useEffect(() => { console.log(offer); }, [])
     const { pathname } = useLocation();
 
     useEffect(() => {
