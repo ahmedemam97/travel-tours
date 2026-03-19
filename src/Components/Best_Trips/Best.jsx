@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import img_1 from '../../Assets/menem-tours_imgs/trips/Rass-Mohammed.jpg'
 import img_2 from '../../Assets/menem-tours_imgs/trips/Albatraa.jpg'
 import img_3 from '../../Assets/menem-tours_imgs/trips/Safari.jpg'
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { LangContext } from '../../Context/LangContext';
 import { TripContext } from '../../Context/Trips/TripContext';
 
